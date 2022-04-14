@@ -58,6 +58,17 @@ function Conversion() {
             </div>
           </div>
         </div>
+
+        <div className="bg-white w-40 h-96 flex items-end">
+          <div
+            className="bg-red-500"
+            style={{
+              height: `${celsius}%`,
+              transition: `height 1.3s`,
+              flex: `1`,
+            }}
+          ></div>
+        </div>
       </div>
     </>
   );
