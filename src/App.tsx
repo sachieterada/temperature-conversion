@@ -1,11 +1,9 @@
 import "./App.css";
-
 import { useEffect, useState } from "react";
-import ModeSwitch from "./component/ModeSwitch";
 
-export default App;
+import Header from "./component/Header";
 
-export function App() {
+export default function App() {
   const [celsius, setCelsius] = useState("");
   const [fahrenheit, setFahrenheit] = useState("");
   const [darkMode, setDarkMode] = useState(false);
@@ -22,9 +20,10 @@ export function App() {
   }, [darkMode]);
 
   return (
-    <>
-      <div className="base antialiased text-slate-500 dark:text-slate-400 bg-white dark:bg-slate-900">
-        <ModeSwitch />
+    <div className="text-slate-500 dark:text-slate-400 bg-white dark:bg-slate-900 base">
+      <Header />
+
+      <div className="max-w-xl mx-auto py-8 flex justify-center items-center text-center">
         <div className="flex flex-row space-x-10">
           <div className="flex flex-col space-y-20">
             <div className="flex-flex-col space-y-4">
@@ -75,6 +74,6 @@ export function App() {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }
