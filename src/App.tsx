@@ -12,8 +12,11 @@ function fahrenheitToCelsius(f: number) {
 }
 
 export default function App() {
-  const [celsius, setCelsius] = useState("");
-  const [fahrenheit, setFahrenheit] = useState("");
+  let initial = 0;
+  const [celsius, setCelsius] = useState(initial.toString());
+  const [fahrenheit, setFahrenheit] = useState(
+    celsiusToFahrenheit(initial).toString()
+  );
   const [darkMode, setDarkMode] = useState(false);
 
   useEffect(() => {
