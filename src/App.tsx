@@ -35,42 +35,37 @@ export default function App() {
       <div className="base container mx-auto">
         <Header />
 
-      <div className="w-full max-w-7xl mx-auto py-8 flex justify-center items-center text-center">
-        <div className="flex flex-row space-x-10">
-          <div className="flex flex-col space-y-20">
-            <div className="flex-flex-col space-y-4">
-              <div>
-                Celsius:
-                <input
-                  type="text"
-                  value={celsius}
-                  onChange={(e) => {
-                    let c = e.target.value;
-                    let f = parseInt(c) * 1.8 + 32;
+        <div className="flex-1 w-full max-w-7xl mx-auto py-8 flex justify-center items-center text-center">
+          <div className="flex flex-col md:flex-row md:space-x-20">
+            <div className="flex flex-col">
+              <input
+                type="text"
+                value={celsius}
+                onChange={(e) => {
+                  let c = e.target.value;
+                  let f = celsiusToFahrenheit(parseInt(c));
 
-                    setCelsius(c);
-                    setFahrenheit(f.toString());
-                  }}
-                  className="text-slate-800"
-                />
-              </div>
+                  setCelsius(c);
+                  setFahrenheit(f.toString());
+                }}
+                className="text-slate-800 py-4 text-center text-3xl border-b-2 border-cyan-600 dark:border-slate-400 mb-4"
+              />
+              <div className="font-semibold text-xl">Celsius</div>
             </div>
-            <div className="flex-flex-col space-y-4">
-              <div>
-                Fahrenheit:
-                <input
-                  type="text"
-                  value={fahrenheit}
-                  onChange={(e) => {
-                    let f = e.target.value;
-                    let c = ((parseInt(f) - 32) * 5) / 9;
+            <div className="flex flex-col">
+              <input
+                type="text"
+                value={fahrenheit}
+                onChange={(e) => {
+                  let f = e.target.value;
+                  let c = fahrenheitToCelsius(parseInt(f));
 
-                    setFahrenheit(f);
-                    setCelsius(c.toString());
-                  }}
-                  className="text-slate-800"
-                />
-              </div>
+                  setFahrenheit(f);
+                  setCelsius(c.toString());
+                }}
+                className="text-slate-800 py-4 text-center text-3xl border-b-2 border-cyan-600 dark:border-slate-400 mb-4"
+              />
+              <div className="font-semibold text-xl">Fahrenheit</div>
             </div>
           </div>
 
@@ -83,7 +78,7 @@ export default function App() {
                   flex: `1`,
                 }}
               ></div>
-          </div>
+            </div> */}
         </div>
       </div>
     </div>
