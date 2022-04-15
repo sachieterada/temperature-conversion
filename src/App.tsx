@@ -23,7 +23,7 @@ export default function App() {
     <div className="text-slate-500 dark:text-slate-400 bg-white dark:bg-slate-900 base">
       <Header />
 
-      <div className="max-w-xl mx-auto py-8 flex justify-center items-center text-center">
+      <div className="w-full max-w-7xl mx-auto py-8 flex justify-center items-center text-center">
         <div className="flex flex-row space-x-10">
           <div className="flex flex-col space-y-20">
             <div className="flex-flex-col space-y-4">
