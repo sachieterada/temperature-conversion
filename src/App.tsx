@@ -31,8 +31,9 @@ export default function App() {
   }, [darkMode]);
 
   return (
-    <div className="text-slate-500 dark:text-slate-400 bg-white dark:bg-slate-900 base">
-      <Header />
+    <div className="text-slate-800 dark:text-slate-400 bg-white dark:bg-slate-900">
+      <div className="base container mx-auto">
+        <Header />
 
       <div className="w-full max-w-7xl mx-auto py-8 flex justify-center items-center text-center">
         <div className="flex flex-row space-x-10">
