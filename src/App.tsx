@@ -3,6 +3,14 @@ import { useEffect, useState } from "react";
 
 import Header from "./component/Header";
 
+function celsiusToFahrenheit(c: number) {
+  return c * 1.8 + 32;
+}
+
+function fahrenheitToCelsius(f: number) {
+  return ((f - 32) * 5) / 9;
+}
+
 export default function App() {
   const [celsius, setCelsius] = useState("");
   const [fahrenheit, setFahrenheit] = useState("");
