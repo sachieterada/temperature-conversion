@@ -19,12 +19,12 @@ export default function App() {
   );
 
   return (
-    <div className="text-slate-800 dark:text-slate-400 bg-white dark:bg-slate-900">
+    <div className="text-slate-800 dark:text-white bg-white dark:bg-slate-900">
       <div className="base container mx-auto">
         <Header />
 
-        <div className="flex-1 w-full max-w-7xl mx-auto py-8 flex justify-center items-center text-center">
-          <div className="flex flex-col md:flex-row md:space-x-20">
+        <div className="flex-1 w-full max-w-7xl mx-auto py-5 md:py-8 flex justify-center items-center text-center">
+          <div className="flex flex-col md:flex-row md:space-x-20 space-y-10 md:space-y-0">
             <div className="flex flex-col items-center">
               <input
                 type="text"
@@ -36,7 +36,7 @@ export default function App() {
                   setCelsius(c);
                   setFahrenheit(f.toString());
                 }}
-                className="max-w-xs md:max-w-none text-slate-800 py-4 text-center text-3xl border-b-2 border-cyan-600 dark:border-slate-400 mb-4"
+                className="max-w-xs md:max-w-none text-slate-800 dark:text-white py-4 text-center text-3xl border-b-4 border-cyan-400 mb-4 bg-white dark:bg-slate-900"
               />
               <div className="font-semibold text-xl">Celsius</div>
             </div>
@@ -51,7 +51,7 @@ export default function App() {
                   setFahrenheit(f);
                   setCelsius(c.toString());
                 }}
-                className="max-w-xs md:max-w-none text-slate-800 py-4 text-center text-3xl border-b-2 border-cyan-600 dark:border-slate-400 mb-4"
+                className="max-w-xs md:max-w-none text-slate-800 dark:text-white py-4 text-center text-3xl border-b-4 border-cyan-400  mb-4 bg-white dark:bg-slate-900"
               />
               <div className="font-semibold text-xl">Fahrenheit</div>
             </div>
