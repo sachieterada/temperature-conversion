@@ -17,18 +17,6 @@ export default function App() {
   const [fahrenheit, setFahrenheit] = useState(
     celsiusToFahrenheit(initial).toString()
   );
-  const [darkMode, setDarkMode] = useState(false);
-
-  useEffect(() => {
-    // tailwind expects the dark tag to be set on the root element
-    if (darkMode) {
-      window.document.documentElement.classList.add("dark");
-      // localStorage.setItem("dark_mode", "true");
-    } else {
-      window.document.documentElement.classList.remove("dark");
-      // localStorage.removeItem("dark_mode");
-    }
-  }, [darkMode]);
 
   return (
     <div className="text-slate-800 dark:text-slate-400 bg-white dark:bg-slate-900">
@@ -37,7 +25,7 @@ export default function App() {
 
         <div className="flex-1 w-full max-w-7xl mx-auto py-8 flex justify-center items-center text-center">
           <div className="flex flex-col md:flex-row md:space-x-20">
-            <div className="flex flex-col">
+            <div className="flex flex-col items-center">
               <input
                 type="text"
                 value={celsius}
@@ -48,7 +36,7 @@ export default function App() {
                   setCelsius(c);
                   setFahrenheit(f.toString());
                 }}
-                className="text-slate-800 py-4 text-center text-3xl border-b-2 border-cyan-600 dark:border-slate-400 mb-4"
+                className="max-w-xs md:max-w-none text-slate-800 py-4 text-center text-3xl border-b-2 border-cyan-600 dark:border-slate-400 mb-4"
               />
               <div className="font-semibold text-xl">Celsius</div>
             </div>
@@ -63,7 +51,7 @@ export default function App() {
                   setFahrenheit(f);
                   setCelsius(c.toString());
                 }}
-                className="text-slate-800 py-4 text-center text-3xl border-b-2 border-cyan-600 dark:border-slate-400 mb-4"
+                className="max-w-xs md:max-w-none text-slate-800 py-4 text-center text-3xl border-b-2 border-cyan-600 dark:border-slate-400 mb-4"
               />
               <div className="font-semibold text-xl">Fahrenheit</div>
             </div>
