@@ -27,7 +27,6 @@ export default function App() {
             <div className="flex flex-col items-center">
               <input
                 type="text"
-                inputMode="numeric"
                 value={celsius}
                 onChange={(e) => {
                   let c = parseInt(e.target.value);
@@ -58,7 +57,6 @@ export default function App() {
             <div className="flex flex-col">
               <input
                 type="text"
-                inputMode="numeric"
                 value={fahrenheit}
                 onChange={(e) => {
                   let f = parseInt(e.target.value);
