@@ -1,8 +1,5 @@
 .base {
-  @apply w-full
-  max-w-screen-2xl
-  mx-auto
-  flex
+  @apply flex
   flex-col
   min-h-screen;
 }
