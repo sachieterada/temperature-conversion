@@ -13,8 +13,10 @@ function fahrenheitToCelsius(f: number) {
 
 export default function App() {
   let initial = 0;
-  const [celsius, setCelsius] = useState(initial);
-  const [fahrenheit, setFahrenheit] = useState(celsiusToFahrenheit(initial));
+  const [celsius, setCelsius] = useState(initial.toString());
+  const [fahrenheit, setFahrenheit] = useState(
+    celsiusToFahrenheit(initial).toString()
+  );
   const [error, setError] = useState(false);
 
   return (
@@ -29,19 +31,24 @@ export default function App() {
                 type="text"
                 value={celsius}
                 onChange={(e) => {
-                  let c = parseInt(e.target.value);
+                  let c = parseFloat(e.target.value);
+                  setError(false);
 
-                  if (isNaN(c)) {
-                    setError(true);
+                  // ignore blank value
+                  if (e.target.value === "") {
+                    setCelsius("");
+                    setFahrenheit("");
                     return;
                   }
 
-                  setError(false);
+                  setCelsius(e.target.value);
 
-                  let f = celsiusToFahrenheit(c);
-
-                  setCelsius(c);
-                  setFahrenheit(f);
+                  if (isNaN(c)) {
+                    setError(true);
+                  } else {
+                    let f = celsiusToFahrenheit(c).toFixed(2);
+                    setFahrenheit(f);
+                  }
                 }}
                 className={`
                   max-w-xs md:max-w-none text-slate-800 dark:text-white py-4 text-center text-3xl border-b-4 mb-4 bg-white dark:bg-slate-900
@@ -59,18 +66,24 @@ export default function App() {
                 type="text"
                 value={fahrenheit}
                 onChange={(e) => {
-                  let f = parseInt(e.target.value);
+                  let f = parseFloat(e.target.value);
+                  setError(false);
+
+                  // ignore blank value
+                  if (e.target.value === "") {
+                    setCelsius("");
+                    setFahrenheit("");
+                    return;
+                  }
+
+                  setFahrenheit(e.target.value);
 
                   if (isNaN(f)) {
                     setError(true);
-                    return;
+                  } else {
+                    let c = fahrenheitToCelsius(f).toFixed(2);
+                    setCelsius(c);
                   }
-                  setError(false);
-
-                  let c = fahrenheitToCelsius(f);
-
-                  setFahrenheit(f);
-                  setCelsius(c);
                 }}
                 className={`
                 max-w-xs md:max-w-none text-slate-800 dark:text-white py-4 text-center text-3xl border-b-4 mb-4 bg-white dark:bg-slate-900
