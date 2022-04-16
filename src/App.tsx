@@ -44,8 +44,13 @@ export default function App() {
                   setCelsius(c);
                   setFahrenheit(f);
                 }}
-                className={`${error ? "border-red-400" : "border-cyan-400"}
-                  max-w-xs md:max-w-none text-slate-800 dark:text-white py-4 text-center text-3xl border-b-4 mb-4 bg-white dark:bg-slate-900`}
+                className={`
+                  max-w-xs md:max-w-none text-slate-800 dark:text-white py-4 text-center text-3xl border-b-4 mb-4 bg-white dark:bg-slate-900
+                  ${
+                    error
+                      ? "text-red-400 dark:text-red-400 border-red-400"
+                      : "border-cyan-400"
+                  }`}
               />
               {error && (
                 <p className="text-red-400 text-sm font-semibold">
@@ -74,8 +79,13 @@ export default function App() {
                   setFahrenheit(f);
                   setCelsius(c);
                 }}
-                className={`${error ? "border-red-400" : "border-cyan-400"}
-                  max-w-xs md:max-w-none text-slate-800 dark:text-white py-4 text-center text-3xl border-b-4 border-cyan-400  mb-4 bg-white dark:bg-slate-900`}
+                className={`
+                max-w-xs md:max-w-none text-slate-800 dark:text-white py-4 text-center text-3xl border-b-4 mb-4 bg-white dark:bg-slate-900
+                ${
+                  error
+                    ? "text-red-400 dark:text-red-400 border-red-400"
+                    : "border-cyan-400"
+                }`}
               />
               {error && (
                 <p className="text-red-400 text-sm font-semibold">
