@@ -52,11 +52,6 @@ export default function App() {
                       : "border-cyan-400"
                   }`}
               />
-              {error && (
-                <p className="text-red-400 text-sm font-semibold">
-                  Please put some number.
-                </p>
-              )}
 
               <div className="font-semibold text-xl">Celsius</div>
             </div>
@@ -87,11 +82,6 @@ export default function App() {
                     : "border-cyan-400"
                 }`}
               />
-              {error && (
-                <p className="text-red-400 text-sm font-semibold">
-                  Please put some number.
-                </p>
-              )}
 
               <div className="font-semibold text-xl">Fahrenheit</div>
             </div>
