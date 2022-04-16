@@ -4,7 +4,7 @@ import { SunIcon } from "@heroicons/react/outline";
 import { MoonIcon } from "@heroicons/react/solid";
 
 export default function ModeSwitch() {
-  const { isDarkMode, modeSwitch } = useSimpleDarkMode();
+  const { isDarkMode, modeSwitch } = useDarkMode();
   return (
     <>
       <Switch
@@ -31,27 +31,37 @@ export default function ModeSwitch() {
   );
 }
 
-type UseSimpleDarkMode = (isDark?: boolean) => {
+type UseDarkMode = (isDark?: boolean) => {
   isDarkMode: boolean;
   modeSwitch: (isDark?: boolean) => void;
 };
 
-export const useSimpleDarkMode: UseSimpleDarkMode = (isInitialDark = false) => {
-  const [isDarkMode, modeSwitchTheme] = useState<boolean>(isInitialDark);
+export const useDarkMode: UseDarkMode = (isInitialDark = false) => {
+  const [isDarkMode, setDarkMode] = useState<boolean>(isInitialDark);
   const modeSwitch = useCallback((isDark?: boolean) => {
     if (typeof isDark === "undefined") {
-      modeSwitchTheme((state) => !state);
+      setDarkMode((state) => !state);
       return;
     }
 
-    modeSwitchTheme(isDark);
+    setDarkMode(isDark);
   }, []);
 
   useEffect(() => {
+    // set the initial dark mode value
+    if (localStorage.getItem("theme") === "dark") {
+      setDarkMode(true);
+    }
+  }, []);
+
+  useEffect(() => {
+    // tailwind expects the dark tag to be set on the root element
     if (isDarkMode) {
       document.documentElement.classList.add("dark");
+      localStorage.setItem("theme", "dark");
     } else {
       document.documentElement.classList.remove("dark");
+      localStorage.removeItem("theme");
     }
   }, [isDarkMode]);
 
