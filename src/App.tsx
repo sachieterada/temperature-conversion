@@ -24,7 +24,7 @@ export default function App() {
 
         <div className="flex-1 w-full max-w-7xl mx-auto py-5 md:py-8 flex justify-center items-center text-center">
           <div className="flex flex-col md:flex-row md:space-x-20 space-y-10 md:space-y-0">
-            <div className="flex flex-col items-center">
+            <div className="flex flex-col">
               <input
                 type="text"
                 value={celsius}
