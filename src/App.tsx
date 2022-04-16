@@ -1,5 +1,5 @@
 import "./App.css";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 import Header from "./component/Header";
 
@@ -13,10 +13,9 @@ function fahrenheitToCelsius(f: number) {
 
 export default function App() {
   let initial = 0;
-  const [celsius, setCelsius] = useState(initial.toString());
-  const [fahrenheit, setFahrenheit] = useState(
-    celsiusToFahrenheit(initial).toString()
-  );
+  const [celsius, setCelsius] = useState(initial);
+  const [fahrenheit, setFahrenheit] = useState(celsiusToFahrenheit(initial));
+  const [error, setError] = useState(false);
 
   return (
     <div className="text-slate-800 dark:text-white bg-white dark:bg-slate-900">
@@ -28,45 +27,76 @@ export default function App() {
             <div className="flex flex-col items-center">
               <input
                 type="text"
+                inputMode="numeric"
                 value={celsius}
                 onChange={(e) => {
-                  let c = e.target.value;
-                  let f = celsiusToFahrenheit(parseInt(c));
+                  let c = parseInt(e.target.value);
+
+                  if (isNaN(c)) {
+                    setError(true);
+                    return;
+                  }
+
+                  setError(false);
+
+                  let f = celsiusToFahrenheit(c);
 
                   setCelsius(c);
-                  setFahrenheit(f.toString());
+                  setFahrenheit(f);
                 }}
-                className="max-w-xs md:max-w-none text-slate-800 dark:text-white py-4 text-center text-3xl border-b-4 border-cyan-400 mb-4 bg-white dark:bg-slate-900"
+                className={`${error ? "border-red-400" : "border-cyan-400"}
+                  max-w-xs md:max-w-none text-slate-800 dark:text-white py-4 text-center text-3xl border-b-4 mb-4 bg-white dark:bg-slate-900`}
               />
+              {error && (
+                <p className="text-red-400 text-sm font-semibold">
+                  Please put some number.
+                </p>
+              )}
+
               <div className="font-semibold text-xl">Celsius</div>
             </div>
             <div className="flex flex-col">
               <input
                 type="text"
+                inputMode="numeric"
                 value={fahrenheit}
                 onChange={(e) => {
-                  let f = e.target.value;
-                  let c = fahrenheitToCelsius(parseInt(f));
+                  let f = parseInt(e.target.value);
+
+                  if (isNaN(f)) {
+                    setError(true);
+                    return;
+                  }
+                  setError(false);
+
+                  let c = fahrenheitToCelsius(f);
 
                   setFahrenheit(f);
-                  setCelsius(c.toString());
+                  setCelsius(c);
                 }}
-                className="max-w-xs md:max-w-none text-slate-800 dark:text-white py-4 text-center text-3xl border-b-4 border-cyan-400  mb-4 bg-white dark:bg-slate-900"
+                className={`${error ? "border-red-400" : "border-cyan-400"}
+                  max-w-xs md:max-w-none text-slate-800 dark:text-white py-4 text-center text-3xl border-b-4 border-cyan-400  mb-4 bg-white dark:bg-slate-900`}
               />
+              {error && (
+                <p className="text-red-400 text-sm font-semibold">
+                  Please put some number.
+                </p>
+              )}
+
               <div className="font-semibold text-xl">Fahrenheit</div>
             </div>
           </div>
 
           {/* <div className="bg-white w-40 h-96 flex items-end">
-              <div
-                className="bg-red-500"
-                style={{
-                  height: `${celsius}%`,
-                  transition: `height 1.3s`,
-                  flex: `1`,
-                }}
-              ></div>
-            </div> */}
+            <div
+              className="bg-red-500"
+              style={{
+                height: `${celsius}%`,
+                transition: `height 1.3s`,
+                flex: `1`,
+              }}
+            ></div>
+          </div> */}
         </div>
       </div>
     </div>
